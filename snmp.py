@@ -17,7 +17,6 @@ class Snmp(ScannerForm):
             src_port = ""
         }
         """
-        print(self.target + " " + self.parameters["OID"] + " " + self.parameters["src_port"])
         if (self.parameters["SNMP_request"] == "get"):
             try:
                 print(get(self.target, [self.parameters["OID"]], hlapi.CommunityData('public'), self.parameters["src_port"]))
