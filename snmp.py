@@ -1,4 +1,5 @@
 from pysnmp import hlapi
+from scanInterface import ScannerForm
 
 """
 def main():
@@ -32,26 +33,32 @@ def main():
         print(response)
         print("\n")
 """
+class Snmp(ScannerForm):
 
-def snmp_get(desc):
-    """
-    desc = {
-        type = "SNMP",
-        SNMP_request = "get"/"get_bulk",
-        OID = ""(OID trying to investigate),
-        bulk_non_repeaters = int(),
-        bulk_max_repeaters = int(),
-        IPs = [],
-        src_port = ""
-    }
-    """
-    if (desc["SNMP_request"] == "get"):
-        for ip in desc["IPs"]:
-            get(ip, desc["OID"], hlapi.CommunityData('public'), desc["src_port"])
-    elif(desc["SNMP_request"] == "get_bulk"):
-        for ip in desc["IPs"]:
-            get_bulk(ip, desc["OID"], hlapi.CommunityData('public'), desc["bulk_max_repeaters"], desc["bulk_non_repeaters"], desc["src_port"])
+    def __init__(self, target, parameters):
+        super().__init__(target,parameters)
 
+    def get(self):
+        """
+        parameters = {
+            "SNMP_request": "get"/"get_bulk",
+            "OID": ""(OID trying to investigate),
+            "bulk_non_repeaters": int(),
+            "bulk_max_repeaters": int(),
+            src_port = ""
+        }
+        """
+        print(self.target + " " + self.parameters["OID"] + " " + self.parameters["src_port"])
+        if (self.parameters["SNMP_request"] == "get"):
+            try:
+                print(get(self.target, [self.parameters["OID"]], hlapi.CommunityData('public'), self.parameters["src_port"]))
+            except:
+                "No RESPONSE"
+        elif(self.parameters["SNMP_request"] == "get_bulk"):
+            try:
+                print(get_bulk(self.target, [self.parameters["OID"]], hlapi.CommunityData('public'), self.parameters["bulk_max_repeaters"], self.parameters["bulk_non_repeaters"], self.parameters["src_port"]))
+            except:
+                "NO RESPONSE"
 
 
 def get_bulk(target, oids, credentials, count, start_from=0, port=161,
