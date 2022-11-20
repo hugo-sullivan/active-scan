@@ -33,7 +33,7 @@ def main():
         print(response)
         print("\n")
 """
-class Snmp(ScannerForm):
+class snmp(ScannerForm):
 
     def __init__(self, target, parameters):
         super().__init__(target,parameters)

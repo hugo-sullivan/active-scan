@@ -1,6 +1,8 @@
 #base file
-import snmp
-from scanTranslator import getScanner
+from scanTranslator import ScannerForm
+from importlib import import_module
+
+
 
 def main():
     """
@@ -47,10 +49,12 @@ def main():
         }
     }
     
+    mod = import_module(scan["type"])
     for ip in scan["targets"]["ips"]:
-        scanner = getScanner(scan["type"], ip,  scan["parameters"])
+        parameters = scan["parameters"]
+        scan_type = scan["type"]
+        scanner = eval("mod."+scan_type+"(ip, parameters)")
         scanner.get()
-
 
 if __name__ == "__main__":
     main()
