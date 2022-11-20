@@ -49,12 +49,28 @@ def main():
         }
     }
     
-    mod = import_module(scan["type"])
+    scan_type = scan["type"]
+    scan_mod = module_discover()
+    mod = scan_mod[scan_type]
     for ip in scan["targets"]["ips"]:
         parameters = scan["parameters"]
-        scan_type = scan["type"]
         scanner = eval("mod."+scan_type+"(ip, parameters)")
         scanner.get()
+
+def module_discover():
+    f = open("configuration.yaml","r")
+    """
+    {
+        <scan_type> : (imported module)
+    }    
+    """
+    scan_mod ={}
+    for mod in f:
+        scan_type = mod.split()[0]
+        scan_mod[scan_type] = import_module(scan_type)
+    return scan_mod
+
+
 
 if __name__ == "__main__":
     main()
