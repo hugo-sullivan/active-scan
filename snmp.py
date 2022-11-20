@@ -1,25 +1,8 @@
 from pysnmp import hlapi
 from scanInterface import ScannerForm
 
-"""
-def main():
-    #args = sys.argv[1:]
-    #IP = input("Enter the desired IP address: ")
-    IP = "192.168.1.234"
-    OID = []    
-    OID_input = input("Enter the desired OID: ")
-    outputs = ["SNMP outputs"]
-    
-    if (IP.split()[0] == "-f"):
-        #python open file then loop through the for loops
-        f = open(IP.split()[1], "r")
-        IP_file  = f.read().split()
-        for target in IP_file:
-            outputs.append(get(target, OID, hlapi.CommunityData('public')))
-            print(target)
-	
-    else:
 
+<<<<<<< HEAD
     if (OID_input.split()[0] == "-b"):
         bulk_non_repeaters = int(input("Enter the desired no repeater value: "))
         bulk_max_repeaters = int(input("Enter the desired max repeater value: "))
@@ -34,6 +17,9 @@ def main():
         print("\n")
 """
 class snmp(ScannerForm):
+=======
+class Snmp(ScannerForm):
+>>>>>>> 6068044d56161d80b02e913f9bff50ce5d84cd89
 
     def __init__(self, target, parameters):
         super().__init__(target,parameters)
@@ -48,7 +34,6 @@ class snmp(ScannerForm):
             src_port = ""
         }
         """
-        print(self.target + " " + self.parameters["OID"] + " " + self.parameters["src_port"])
         if (self.parameters["SNMP_request"] == "get"):
             try:
                 print(get(self.target, [self.parameters["OID"]], hlapi.CommunityData('public'), self.parameters["src_port"]))
