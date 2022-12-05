@@ -1,9 +1,8 @@
 from abc import ABC, abstractmethod
 
 class ScannerForm(ABC):
-    def __init__(self, target, parameters):
-        self.target = target
-        self.parameters = parameters
+    def __init__(self, scan):
+        self.scan = scan
 
     @abstractmethod
     def get(self):

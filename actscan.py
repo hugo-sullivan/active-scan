@@ -1,10 +1,9 @@
 #base file
-from scanTranslator import ScannerForm
 from importlib import import_module
 
 
 
-def main():
+def scanner(scan):
     """
     {
         "targets" : {
@@ -36,7 +35,7 @@ def main():
             "parameters": <object>
         }
     }    
-    """
+    
     scan = {
         "targets": {
             "ips": [ "192.168.1.234", "192.168.1.238", "192.168.1.134"]
@@ -44,18 +43,21 @@ def main():
         "type": "snmp",
         "parameters": {
             "SNMP_request" : "get",
-            "OID" : "1.3.6.1.2.1.1.1.0",
+            "OID" : "1.3.6.1.2.1.1.2.0",
             "src_port" : "161"
         }
     }
-    
+    """
     scan_type = scan["type"]
-    scan_mod = module_discover()
     mod = scan_mod[scan_type]
+    scanner = eval("mod."+scan_type+"(scan)")
+    scanner.scan()
+    """
     for ip in scan["targets"]["ips"]:
         parameters = scan["parameters"]
         scanner = eval("mod."+scan_type+"(ip, parameters)")
-        scanner.get()
+        scanner.scan()
+    """
 
 def module_discover():
     f = open("configuration.yaml","r")
@@ -64,7 +66,7 @@ def module_discover():
         <scan_type> : (imported module)
     }    
     """
-    scan_mod ={}
+    global scan_mod ={}
     for mod in f:
         scan_type = mod.split()[0]
         scan_mod[scan_type] = import_module(scan_type)
@@ -73,4 +75,4 @@ def module_discover():
 
 
 if __name__ == "__main__":
-    main()
+    scanner()
