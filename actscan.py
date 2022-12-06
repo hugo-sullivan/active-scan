@@ -2,8 +2,7 @@
 from importlib import import_module
 
 
-
-def scanner(scan):
+def scanner(scan_param):
     """
     {
         "targets" : {
@@ -35,7 +34,6 @@ def scanner(scan):
             "parameters": <object>
         }
     }    
-    
     scan = {
         "targets": {
             "ips": [ "192.168.1.234", "192.168.1.238", "192.168.1.134"]
@@ -48,16 +46,13 @@ def scanner(scan):
         }
     }
     """
-    scan_type = scan["type"]
+    scan_type = scan_param["type"]
     mod = scan_mod[scan_type]
-    scanner = eval("mod."+scan_type+"(scan)")
+    print("mod."+scan_type+"(scan_param)")
+    print(mod)
+    scanner = eval("mod."+scan_type+"(scan_param)")
+    print(type(scanner))
     scanner.scan()
-    """
-    for ip in scan["targets"]["ips"]:
-        parameters = scan["parameters"]
-        scanner = eval("mod."+scan_type+"(ip, parameters)")
-        scanner.scan()
-    """
 
 def module_discover():
     f = open("configuration.yaml","r")
@@ -66,8 +61,10 @@ def module_discover():
         <scan_type> : (imported module)
     }    
     """
-    global scan_mod ={}
+    global scan_mod
+    scan_mod = {}
     for mod in f:
+        print(mod)
         scan_type = mod.split()[0]
         scan_mod[scan_type] = import_module(scan_type)
     return scan_mod
@@ -75,4 +72,8 @@ def module_discover():
 
 
 if __name__ == "__main__":
-    scanner()
+    module_discover()
+    scan = {
+        "type": "ssdp"
+    }
+    scanner(scan)

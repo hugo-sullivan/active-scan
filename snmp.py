@@ -3,8 +3,8 @@ from scanInterface import ScannerForm
 
 class snmp(ScannerForm):
 
-    def __init__(self, scan):
-        super().__init__(scan)
+    def __init__(self, scan_param):
+        super().__init__(scan_param)
 
     def scan(self):
         """
@@ -16,13 +16,13 @@ class snmp(ScannerForm):
             src_port = ""
         }
         """
-        targets = self.scan["targets"]
-        for ip in target["ips"]:
-            scan_target(ip)
+        targets = self.scan_param["targets"]
+        for ip in targets["ips"]:
+            self.scan_target(ip)
         
     
-    def scan_target(target):
-        parameters = self.scan["parameters"]
+    def scan_target(self, target):
+        parameters = self.scan_param["parameters"]
         if (parameters["SNMP_request"] == "get"):
             try:
                 print(get(target, [parameters["OID"]], hlapi.CommunityData('public'), parameters["src_port"]))
@@ -91,3 +91,21 @@ def fetch(handler, count):
         except StopIteration:
             break
     return result
+
+
+if __name__ == "__main__":
+    scan_param = {
+        "targets": {
+            "ips": [ "192.168.1.234", "192.168.1.238", "192.168.1.134"]
+        },
+        "type": "snmp",
+        "parameters": {
+            "SNMP_request" : "get",
+            "OID" : "1.3.6.1.2.1.1.2.0",
+            "src_port" : "161"
+        }
+    }
+        
+    scanner = snmp(scan_param)
+    print(type(scanner))
+    scanner.scan()

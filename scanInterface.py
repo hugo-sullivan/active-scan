@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 
 class ScannerForm(ABC):
-    def __init__(self, scan):
-        self.scan = scan
+    def __init__(self, scan_param):
+        self.scan_param = scan_param
 
     @abstractmethod
-    def get(self):
+    def scan(self):
         
         pass
