@@ -85,6 +85,15 @@ if __name__ == "__main__":
         }
     }
     """
+    """
+    scan = {
+        "type": "mdns",
+        "parameters": {
+            "service": "_ipps._tcp.local."
+        }
+    }
+    """
+    """
     scan = {
         "targets": {
             "ips": [ "192.168.1.234", "192.168.1.238", "192.168.1.134"]
@@ -93,5 +102,9 @@ if __name__ == "__main__":
         "parameters": {
             "ports" : "70,80,100"
         }
+    }
+    """
+    scan = {
+        "type": "ssdp"
     }
     scanner(scan)
