@@ -4,10 +4,7 @@ import ssdpy
 
 from scanInterface import ScannerForm
 
-class ssdp(ScannerForm):
-
-    def __init__(self, scan_param):
-        super().__init__(scan_param)
+class scanner(ScannerForm):
     
     def scan(self):
         client = ssdpy.SSDPClient()
@@ -29,5 +26,5 @@ if __name__ == "__main__":
         "type": "ssdp"
     }
     
-    scanner = ssdp(scan_param)
+    scanner = scanner(scan_param)
     scanner.scan()

@@ -1,10 +1,7 @@
 from pysnmp import hlapi
 from scanInterface import ScannerForm
 
-class snmp(ScannerForm):
-
-    def __init__(self, scan_param):
-        super().__init__(scan_param)
+class scanner(ScannerForm):
 
     def scan(self):
         """

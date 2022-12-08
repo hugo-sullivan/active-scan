@@ -1,2 +1,3 @@
-snmp C:\Users\tara\Documents\hugo\scripts snmp.py
-ssdp C:\Users\tara\Documents\hugo\scripts ssdp.py
+snmp Modules/snmp.py
+ssdp Modules/ssdp.py
+nmap Modules/nmap.py

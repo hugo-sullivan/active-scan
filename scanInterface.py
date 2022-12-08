@@ -6,5 +6,4 @@ class ScannerForm(ABC):
 
     @abstractmethod
     def scan(self):
-        
         pass
