@@ -19,10 +19,8 @@ class scanner(ScannerForm):
         
         service = self.scan_param["parameters"]["service"]
         browser = ServiceBrowser(zeroconf, service, listener, question_type=2)
-        try:
-            input("Press enter to exit...\n\n")
-        finally:
-            zeroconf.close()
+        sleep(10)
+        zeroconf.close()
 
 
 

@@ -105,6 +105,14 @@ if __name__ == "__main__":
     }
     """
     scan = {
-        "type": "ssdp"
+        "targets": {
+            "ips": [ "192.168.1.234"]
+        },
+        "type": "snmp",
+        "parameters": {
+            "SNMP_request" : "get",
+            "OID" : "1.3.6.1.2.1.1.5.0",
+            "src_port" : "161"
+        }
     }
     scanner(scan)
