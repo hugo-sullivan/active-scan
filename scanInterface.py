@@ -7,3 +7,7 @@ class ScannerForm(ABC):
     @abstractmethod
     def scan(self):
         pass
+    
+    @abstractmethod
+    def get_name():
+        pass

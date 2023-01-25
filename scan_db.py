@@ -169,6 +169,7 @@ def get_running_scans():
     return database["running"]
 
 def get_previous_scans():
+    print("Gets the previous scan")
     return database["past"]
     
 def database_init():

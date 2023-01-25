@@ -18,6 +18,9 @@ class scanner(ScannerForm):
             self.scan_target(ip)
         
     
+    def get_name():
+        return "snmp"
+
     def scan_target(self, target):
         parameters = self.scan_param["parameters"]
         if (parameters["SNMP_request"] == "get"):

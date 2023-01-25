@@ -1,5 +1,6 @@
 #base file
 from importlib.machinery import SourceFileLoader
+import os
 
 
 def scanner(scan_param):
@@ -59,16 +60,30 @@ def module_discover():
     }    
     """
     global scan_mod
+    
+    module_dir = os.listdir()
+    os.chdir('Modules')
+    dir_list = os.listdir()
+    modules = module_list(dir_list)
+    
     scan_mod = {}
-    for mod in f:
-        print(mod)
+    for mod in modules:
+        print(mod["name"])
+        loaded_module = SourceFileLoader(mod["name"], mod["path"]).load_module()
         
-        scan_name = mod.split()[0]
-        scan_path = mod.split()[1]
-        scan_mod[scan_name] = SourceFileLoader(scan_name, scan_path).load_module()
+        scan_name = loaded_module.scanner.get_name()
+        scan_mod[scan_name] = loaded_module
     return scan_mod
 
-
+def module_list(dir_list):
+    filter_list = []
+    for file in dir_list:
+        if file.endswith(".py"):
+            file_entry = {}
+            file_entry["path"] =  file
+            file_entry["name"] = file[:-3]
+            filter_list.append(file_entry)
+    return filter_list
 
 if __name__ == "__main__":
     module_discover()
@@ -104,11 +119,12 @@ if __name__ == "__main__":
         }
     }
     """
+
     scan = {
         "targets": {
             "ips": [ "192.168.1.234"]
         },
-        "type": "snmp",
+        "type": "snmpv10",
         "parameters": {
             "SNMP_request" : "get",
             "OID" : "1.3.6.1.2.1.1.5.0",
@@ -116,3 +132,4 @@ if __name__ == "__main__":
         }
     }
     scanner(scan)
+ 

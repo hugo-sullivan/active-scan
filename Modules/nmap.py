@@ -22,6 +22,8 @@ class scanner(ScannerForm):
             print(version_results)
         
 
+    def get_name():
+        return "nmap"
 
 if __name__ == "__main__":
     scan_param = {

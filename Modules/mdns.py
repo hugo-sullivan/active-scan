@@ -21,7 +21,9 @@ class scanner(ScannerForm):
         browser = ServiceBrowser(zeroconf, service, listener, question_type=2)
         sleep(10)
         zeroconf.close()
-
+    
+    def get_name():
+        return "mdns"
 
 
 class MyListener(ServiceListener):

@@ -14,6 +14,9 @@ class scanner(ScannerForm):
             if ("location" in device):
                 getXML(device["location"])
 
+    def get_name():
+        return "ssdp"
+
 def getXML(location):
     print(location)
     if (location != None):
