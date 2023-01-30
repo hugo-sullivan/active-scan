@@ -5,6 +5,22 @@ import os
 
 def scanner(scan_param):
     """
+    "ip-ranges": {
+			"type": "array",
+            "items": {
+			  "type": "object",
+			  "properties" : {
+                "start": {
+		          "type": "string",
+			      "format": "string"
+		        },
+		        "end": {
+			      "type": "string",
+			      "format": "string"
+		        }
+			  }
+			}
+		  },
     {
         "targets" : {
             "ips" :[<individual ips entered in>]
@@ -20,17 +36,11 @@ def scanner(scan_param):
 
             ]
         },
-        "scan-rate" : {
-            "max-rate": <int>,
-            "min-rate": <int>,
-            "scan-delay": <int>
-        },
         "repeats" : {
             "count" : <int>,
-            "interval": <int>,
-            "mode": batch/individual
+            "delay": <int>
         },
-        "scanner": {
+        "packets": {
             "type" : <string>,
             "parameters": <object>
         }
@@ -47,7 +57,7 @@ def scanner(scan_param):
         }
     }
     """
-    scan_type = scan_param["type"]
+    scan_type = scan_param["packets"]["type"]
     mod = scan_mod[scan_type]
     scanner = mod.scanner(scan_param)
     scanner.scan()

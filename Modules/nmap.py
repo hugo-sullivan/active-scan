@@ -14,9 +14,9 @@ class scanner(ScannerForm):
         
         nmap = nmap3.Nmap()
         
-        targets = self.scan_param["targets"]
-        ports = self.scan_param["parameters"]["ports"]
-        for ip in targets["ips"]:
+        targets = self.scan_param["ip-address"]
+        ports = self.scan_param["packets"]["parameters"]["ports"]
+        for ip in targets:
             version_results = nmap.nmap_version_detection(ip, args="-Pn -p "+ports)
             
             print(version_results)

@@ -15,7 +15,7 @@ class scan_control_thread(threading.Thread):
         if (scan_id != None and scan_time <= time.time()):
             scan_handler(scan_id)
         else:
-            print("no scans to complete")
+            #print("no scans to complete")
             time.sleep(1)
     
     

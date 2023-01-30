@@ -21,17 +21,11 @@ import threading
 
                     ]
                 },
-                "scan-rate" : {
-                    "max-rate": <int>,
-                    "min-rate": <int>,
-                    "scan-delay": <int>
-                },
                 "repeats" : {
                     "count" : <int>,
-                    "interval": <int>,
-                    "mode": batch/individual
+                    "delay": <int>,
                 },
-                "scanner": {
+                "packets": {
                     "type" : <string>,
                     "parameters": <object>
                 },
@@ -53,17 +47,11 @@ import threading
 
                     ]
                 },
-                "scan-rate" : {
-                    "max-rate": <int>,
-                    "min-rate": <int>,
-                    "scan-delay": <int>
-                },
                 "repeats" : {
                     "count" : <int>,
-                    "interval": <int>,
-                    "mode": batch/individual
+                    "delay": <int>,
                 },
-                "scanner": {
+                "packets": {
                     "type" : <string>,
                     "parameters": <object>
                 },
@@ -87,17 +75,11 @@ import threading
 
                     ]
                 },
-                "scan-rate" : {
-                    "max-rate": <int>,
-                    "min-rate": <int>,
-                    "scan-delay": <int>
-                },
                 "repeats" : {
                     "count" : <int>,
-                    "interval": <int>,
-                    "mode": batch/individual
+                    "delay": <int>,
                 },
-                "scanner": {
+                "packets": {
                     "type" : <string>,
                     "parameters": <object>
                 },
@@ -129,14 +111,22 @@ def edit_scan(scan_id, updated_scan):
         database["scheduled"][scan_id] = updated_scan
 
 def delete_scan(scan_id):
-    database["scheduled"].pop(scan_id)
+    if (scan_id in database["scheduled"]):
+        database["scheduled"].pop(scan_id)
+        return '200'
+    return '400'
+    
 
 def update_scan(scan_id):
     if (scan_id in database["scheduled"]):
         scan = database["scheduled"].pop(scan_id)
+        if (scan["repeats"]["count"] > 0):
+            new_scan = dict(scan)
+            new_scan["repeats"]["count"] -= 1
+            new_scan["scheduled_time"] += new_scan["repeats"]["delay"]
+            add_scan(new_scan)
         scan["start_time"] = time.time()
-        database["running"][scan_id] = scan  
-        
+        database["running"][scan_id] = scan
     elif(scan_id in database["running"]):
         scan = database["running"].pop(scan_id)
         scan["finish_time"] = time.time()

@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
+import json
 from flask_restful import Api
+from flask_swagger_ui import get_swaggerui_blueprint
 import time
 import threading
 from scan_runner import scan_control_thread
@@ -11,15 +13,30 @@ from flasgger import Swagger
 app = Flask(__name__)
 api = Api(app)
 app.secret_key = os.environ.get('SECRET_KEY') or os.urandom(24)
-swagger = Swagger(app)
+
+### swagger specific ###
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Seans-Python-Flask-REST-Boilerplate"
+    }
+)
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+### end swagger specific ###
 
 @app.route('/', methods=['POST'])
 def new_scan():
     """
     <scan>
     """
-    #new_scan = json.loads(request.data)
+    new_scan = json.loads(request.data)
+    print(new_scan)
+    new_scan["scheduled_time"] = (time.time())
     scan_db.add_scan(new_scan)
+    return '200'
     
 @app.route('/scheduled/', methods=['GET'])
 def get_scheduled():
@@ -51,6 +68,7 @@ def delete_scan():
     """
     delete_scan_id = json.loads(request.data)
     scan_db.delete_scan(delete_scan_id)
+    return '200'
 
 @app.route('/x/', methods=['GET'])
 def get_s():
@@ -59,7 +77,7 @@ def get_s():
 
 if __name__ == '__main__':
     scan_db.database_init()
-    scan_db.load_db("database.json")
+    #scan_db.load_db("database.json")
     scan_thread = scan_control_thread()
     scan_thread.start()
     

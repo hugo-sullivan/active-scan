@@ -17,7 +17,7 @@ class scanner(ScannerForm):
         listener = MyListener()
         #browser = asyncio.AsyncServiceBrowser(zeroconf, ["_http._tcp.local."], listener, )
         
-        service = self.scan_param["parameters"]["service"]
+        service = self.scan_param["packets"]["parameters"]["service"]
         browser = ServiceBrowser(zeroconf, service, listener, question_type=2)
         sleep(10)
         zeroconf.close()

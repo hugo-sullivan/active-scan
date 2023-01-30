@@ -13,8 +13,8 @@ class scanner(ScannerForm):
             src_port = ""
         }
         """
-        targets = self.scan_param["targets"]
-        for ip in targets["ips"]:
+        targets = self.scan_param["ip-address"]
+        for ip in targets:
             self.scan_target(ip)
         
     
@@ -22,7 +22,7 @@ class scanner(ScannerForm):
         return "snmp"
 
     def scan_target(self, target):
-        parameters = self.scan_param["parameters"]
+        parameters = self.scan_param["packets"]["parameters"]
         if (parameters["SNMP_request"] == "get"):
             try:
                 print(get(target, [parameters["OID"]], hlapi.CommunityData('public'), parameters["src_port"]))
