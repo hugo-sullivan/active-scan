@@ -63,7 +63,7 @@ def scanner(scan_param):
     scanner.scan()
 
 def module_discover():
-    f = open("configuration.yaml","r")
+    
     """
     {
         <scan_type> : (imported module)
