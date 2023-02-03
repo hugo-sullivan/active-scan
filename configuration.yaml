@@ -1,4 +1,2 @@
-snmp Modules/snmp.py
-ssdp Modules/ssdp.py
-nmap Modules/nmap.py
-mdns Modules/mdns.py
+password
+word

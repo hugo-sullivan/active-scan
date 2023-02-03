@@ -164,6 +164,10 @@
 			  "additionalProperties": "true"
 			}
 		  }
+		},
+		"api_key": {
+	      "type": "string",
+		  "format": "string"
 		}
 	  }
     },

@@ -34,9 +34,11 @@ def new_scan():
     """
     new_scan = json.loads(request.data)
     print(new_scan)
-    new_scan["scheduled_time"] = (time.time())
-    scan_db.add_scan(new_scan)
-    return '200'
+    if (check_valid_key(new_scan["api_key"])):
+        new_scan["scheduled_time"] = (time.time())
+        scan_db.add_scan(new_scan)
+        return '200'
+    return '400'
     
 @app.route('/scheduled/', methods=['GET'])
 def get_scheduled():
@@ -50,32 +52,26 @@ def get_running():
 def get_previous():
     return scan_db.get_previous_scans()
 
-@app.route('/edit/', methods=['PUT'])
-def edit_scan():
-    """
-    {
-    scan_id : <scan_id>,
-    scan : <scan_dict>
-    }
-    """
-    edited_scan = json.loads(request.data)
-    scan_db.edit_scan(edited_scan["scan_id"], edited_scan["scan"])
-
 @app.route('/', methods=['DELETE'])
 def delete_scan():
     """
     <scan_id>
     """
     delete_scan_id = json.loads(request.data)
-    scan_db.delete_scan(delete_scan_id)
-    return '200'
+    if (check_valid_key(delete_scan_id["api_key"])):
+        scan_db.delete_scan(delete_scan_id)
+        return '200'    
+    return '400'
 
-@app.route('/x/', methods=['GET'])
-def get_s():
-        print("recieved")
-        return {'hello': 'world'}
+def check_valid_key(api_key):
+    f = open("../configuration.yaml","r")
+    for line in f:
+        if api_key == line.strip():
+            return True
+    return False
 
 if __name__ == '__main__':
+    
     scan_db.database_init()
     #scan_db.load_db("database.json")
     scan_thread = scan_control_thread()
