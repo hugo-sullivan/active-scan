@@ -61,7 +61,7 @@ def edit_scan():
     edited_scan = json.loads(request.data)
     scan_db.edit_scan(edited_scan["scan_id"], edited_scan["scan"])
 
-@app.route('/delete/', methods=['DELETE'])
+@app.route('/', methods=['DELETE'])
 def delete_scan():
     """
     <scan_id>

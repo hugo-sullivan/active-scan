@@ -16,174 +16,175 @@
       "url": "/"
     }
   ],
-  "paths": {
-	"/": {
-      "post": {
-        "tags": [
-          "New Scan"
-        ],
-        "summary": "Create a new scan request",
-        "requestBody": {
-          "description": "Scan  Object",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/scan"
-              }
+"paths": {
+  "/": {
+    "post": {
+      "tags": [
+        "New Scan"
+      ],
+      "summary": "Create a new scan request",
+      "requestBody": {
+        "description": "Scan  Object",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/scan"
             }
-          }
-        },
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Failed. Bad post data."
           }
         }
       },
-	  "delete": {
-        "tags": [
-          "Delete Scan"
-        ],
-        "summary": "Delete a scheduled scan",
-        "requestBody": {
-          "description": "Delete scheduled scan",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "id": {
-				  "type": "integer",
-				  "format": "integer"
-				}
-              }
-            }
-          }
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
         },
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-          "400": {
-            "description": "Failed. Bad post data."
-          }
+        "400": {
+          "description": "Failed. Bad post data."
         }
       }
-	},
-    "/scheduled": {
-      "get": {
-        "tags": [
-          "Scheduled Scans"
-        ],
-        "summary": "Returns the scans that have been scheduled",
-        "responses": {
-          "200": {
-            "description": "OK",
+    },
+	"delete": {
+      "tags": [
+        "Delete Scan"
+      ],
+      "summary": "Delete a scheduled scan",
+      "requestBody": {
+        "description": "Delete scheduled scan",
+        "required": true,
+        "content": {
+          "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/scheduled-scan"
+              "id": {
+		        "type": "integer",
+				"format": "integer"
+		      }
             }
           }
         }
-      }
-	},
-	"/previous": {
-      "get": {
-        "tags": [
-          "Previous Scans"
-        ],
-        "summary": "Returns the scans that have been run",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/components/schemas/previous-scan"
-            }
-          }
+      },
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+        },
+		"400": {
+          "description": "Failed. Bad post data."
         }
       }
-	},
-	"/running": {
-      "get": {
-        "tags": [
-          "Running Scans"
-        ],
-        "summary": "Returns the scans that are being run",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/components/schemas/running-scan"
-            }
-          }
-        }
-      }
-	}
+    },
   },
-  "components": {
-    "schemas": {
-      "scan": {
-        "type": "object",
-        "properties": {
-          "ip-address": {
-            "type": "array",
-			"items": {
+  "/scheduled": {
+    "get": {
+      "tags": [
+        "Scheduled Scans"
+      ],
+      "summary": "Returns the scans that have been scheduled",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/scheduled-scan"
+          }
+        }
+      }
+    }
+  },
+  "/previous": {
+    "get": {
+      "tags": [
+        "Previous Scans"
+      ],
+      "summary": "Returns the scans that have been run",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/previous-scan"
+          }
+        }
+      }
+    }
+  },
+  "/running": {
+    "get": {
+      "tags": [
+        "Running Scans"
+      ],
+      "summary": "Returns the scans that are being run",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/components/schemas/running-scan"
+          }
+        }
+      }
+    }
+  }
+},
+"components": {
+  "schemas": {
+    "scan": {
+      "type": "object",
+      "properties": {
+        "ip-address": {
+          "type": "array",
+		  "items": {
+			"type": "string",
+			"format": "string"
+		  }
+        },
+	    "repeats": {
+	      "type" :"object",
+		  "properties": {
+		    "count": {
+		      "type": "integer",
+			  "format": "integer"
+		    },
+		    "delay": {
+			  "type": "integer",
+		      "format": "integer"
+		    }
+		  }
+	    },
+		"packets": {
+		  "type": "object",
+		  "properties": {
+			"type": {
 			  "type": "string",
 			  "format": "string"
-			}
-          },
-		  "repeats": {
-	          "type" :"object",
-		      "properties": {
-		        "count": {
-		          "type": "integer",
-			      "format": "integer"
-		        },
-		        "delay": {
-			      "type": "integer",
-			      "format": "integer"
-		        }
-		      }
-	      },
-		  "packets": {
-		    "type": "object",
-			"properties": {
-			  "type": {
-				"type": "string",
-				"format": "string"
-			  },
-			  "parameters": {
-			    "type": "object",
-				"additionalProperties": "true"
-			  }
+			},
+			"parameters": {
+			  "type": "object",
+			  "additionalProperties": "true"
 			}
 		  }
 		}
-      },
-	  "previous-scan": {
-	    "type": "object",
-		"additionalProperties": {
-		  "$ref": "#/components/schemas/scan" 
-		}
-	  },
-	  "running-scan": {
-	    "type": "object",
-		"additionalProperties": {
-		  "$ref": "#/components/schemas/scan" 
-		}
-	  },
-	  "scheduled-scan": {
-	    "type": "object",
-		"additionalProperties": {
-		  "$ref": "#/components/schemas/scan" 
-		}
 	  }
-    }
+    },
+	"previous-scan": {
+	  "type": "object",
+	  "additionalProperties": {
+		"$ref": "#/components/schemas/scan" 
+	  }
+	},
+	"running-scan": {
+	  "type": "object",
+      "additionalProperties": {
+		"$ref": "#/components/schemas/scan" 
+	  }
+	},
+	"scheduled-scan": {
+	  "type": "object",
+      "additionalProperties": {
+		"$ref": "#/components/schemas/scan" 
+	  }
+	}
   }
+}
 }
