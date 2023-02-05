@@ -8,8 +8,11 @@ Python was used with this project because it is meant for testing at small scale
 
 ## Setup Guide
 Requires python 3.7-3.9
+
 Multiple packets need to be installed so a python package installer is helpful I recommend pip.
+
 The python packages required are
+
 - pysnmp
 - ssdpy
 - nmap3
@@ -29,5 +32,5 @@ To add additional modules:
 * the file has to be added to the directory *Modules*. 
 * They have to implement *ScannerForm* class in the *ScanInterface* file.
 * The class in the new module file must be called *scanner*
-* This new class requires *__init__* function as the other modules
+* This new class requires the same *__init__* function as the other modules.
 * The function *get_name* will return the name that has to  be put in the *type* section to call this function from the API.
