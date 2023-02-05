@@ -12,7 +12,8 @@ class scanner(ScannerForm):
             "service": "<service being investigate>"
         }
         """
-        
+        if (!scan_param["parameters"]["multicast"]):
+            zeroconf = Zeroconf(unicast=True)
         zeroconf = Zeroconf()
         listener = MyListener()
         #browser = asyncio.AsyncServiceBrowser(zeroconf, ["_http._tcp.local."], listener, )

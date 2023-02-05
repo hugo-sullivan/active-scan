@@ -93,19 +93,3 @@ def fetch(handler, count):
     return result
 
 
-if __name__ == "__main__":
-    scan_param = {
-        "targets": {
-            "ips": [ "192.168.1.234"]
-        },
-        "type": "snmp",
-        "parameters": {
-            "SNMP_request" : "get",
-            "OID" : "1.3.6.1.2.1.1.5",
-            "src_port" : "161"
-        }
-    }
-        
-    scanner = snmp(scan_param)
-    print(type(scanner))
-    scanner.scan()

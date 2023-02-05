@@ -7,8 +7,19 @@ from scanInterface import ScannerForm
 class scanner(ScannerForm):
     
     def scan(self):
+    """
+        parameters = {
+            "mx": <int 1-5>
+        }
+    """
+        
+        if ("mx" in self.scan_param["packets"]["parameters"]):
+            mx = self.scan_param["packets"]["parameters"]["mx"]
+        else:
+            mx = 1
+        
         client = ssdpy.SSDPClient()
-        devices = client.m_search("ssdp:all")
+        devices = client.m_search("ssdp:all", mx)
         for device in devices:
             print(device)
             if ("location" in device):
@@ -24,10 +35,3 @@ def getXML(location):
         print("Content",contents)
     
 
-if __name__ == "__main__":
-    scan_param = {
-        "type": "ssdp"
-    }
-    
-    scanner = scanner(scan_param)
-    scanner.scan()

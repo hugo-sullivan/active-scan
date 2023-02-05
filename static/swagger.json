@@ -1,15 +1,11 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "sean",
+    "description": "This is an outline of the API for pScan including the parameters for included modules",
     "version": "1.0.0",
-    "title": "Seans-Python3-Flask-Rest-Boilerplate",
+    "title": "pScan API",
     "contact": {
-      "email": "seanwasere@gmail.com"
-    },
-    "license": {
-      "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
+      "email": "hugo.s.sullivan@gmail.com"
     }
   },"servers": [
     {
@@ -187,6 +183,47 @@
 	  "type": "object",
       "additionalProperties": {
 		"$ref": "#/components/schemas/scan" 
+	  }
+	},
+	"snmp": {
+      "type": "object",
+	  "properties": {  
+	    "SNMP_bulk":{
+          "type": "boolean"
+		},
+		"OID": {
+		  "type": "string"
+		},
+		"bulk_non_repeaters": {
+		  "type": "int",
+		},
+		"bulk_max_repeaters": {
+		  "type": "int",
+		}
+	  }
+	},
+	"mdns": {
+	  "type": "object",
+	  "properties": {
+	    "service": {
+		  "type": "string"
+		}
+	  }
+	},
+	"TCP banner grab": {
+	  "type": "object",
+      "properties": {
+        "ports": {
+		  "type": "string"
+		}
+	  }		  
+	},
+	"ssdp": {
+	  "type": "object",
+	  "properties": {
+	    "mx": {
+	      "type": "integer"
+	    }
 	  }
 	}
   }

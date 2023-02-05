@@ -23,17 +23,5 @@ class scanner(ScannerForm):
         
 
     def get_name():
-        return "nmap"
+        return "TCP banner grab"
 
-if __name__ == "__main__":
-    scan_param = {
-        "targets": {
-            "ips": [ "192.168.1.234", "192.168.1.238", "192.168.1.134"]
-        },
-        "parameters": {
-            "ports" : "135,139,445"
-        }
-    }
-    
-    scanner = scanner(scan_param)
-    scanner.scan()

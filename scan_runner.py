@@ -28,6 +28,3 @@ def scan_handler(scan_id):
     update_scan(scan_id)
     
     print("completed "+str(scan_id))
-
-if __name__ == "__main__":
-    scan_control()
