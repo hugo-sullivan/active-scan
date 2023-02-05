@@ -4,7 +4,7 @@ Active scanning tool for research, to be used with a passive inferencing tool fo
 pScan was created to make it easier for researchers working on passive inferencing tools to send more obscure packets for the sake of characterising IoT devices. To accomidate this pScan was made to be very modular so that additional packet types could easily be added, only needing a single file to be added and without changing any pre-existing code. 
 The project pScan itself cannot process or return results from scans that it runs, this is why it is meant to be used with a passive inferincing tool which is capable of processing the packets and infering information from them. The point of pScan is soley to provide a simple to use API that can send less common packet types for researching into passive inferencing.
 
-Python was used with this project because it is meant for testing at small scales, so we used a language which cold be quickly added too with additional packet types.
+Python was used with this project because it is meant for testing at small scales, so we used a language which could be quickly added to with additional packet types.
 
 ## Setup Guide
 Requires python 3.8
@@ -32,7 +32,7 @@ The tool nmap also has to be installed, it can be installed here https://nmap.or
 ## Usage
 To run the tool, run the program app.py then API calls can be made to it.
 
-Instructions on the API is include in the swagger.yaml file to see access this, run the app.py program and visit the page http://127.0.0.1:5000/swagger/, which will provide informaion on the different API calls and schemas that are used.
+Instructions on the API is include in the swagger.yaml file to access this, run the app.py program and visit the page http://127.0.0.1:5000/swagger/, which will provide informaion on the different API calls and schemas that are used.
 
 To add additional modules:
 * the file has to be added to the directory *Modules*. 
