@@ -20,7 +20,13 @@ The python packages required are
 - flask
 - flask_swagger_ui
 - flasgger
+
+
 These are listed in requirement.txt and can all be installed with pip using the command
+
+**python -m pip install -r requirements.txt**
+
+
 The tool nmap also has to be installed, it can be installed here https://nmap.org/download.
 
 ## Usage
