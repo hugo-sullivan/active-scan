@@ -7,7 +7,7 @@ The project pScan itself cannot process or return results from scans that it run
 Python was used with this project because it is meant for testing at small scales, so we used a language which could be quickly added to with additional packet types.
 
 ## Setup Guide
-Requires python 3.8
+Requires python 3.8-3.10
 
 Multiple packets need to be installed so a python package installer is helpful I recommend pip.
 
