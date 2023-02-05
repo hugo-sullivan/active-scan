@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 import json
-from flask_restful import Api
 from flask_swagger_ui import get_swaggerui_blueprint
 import time
 import threading
@@ -11,8 +10,6 @@ from flasgger import Swagger
 
 
 app = Flask(__name__)
-api = Api(app)
-app.secret_key = os.environ.get('SECRET_KEY') or os.urandom(24)
 
 ### swagger specific ###
 SWAGGER_URL = '/swagger'
@@ -61,7 +58,7 @@ def delete_scan():
     """
     delete_scan_id = json.loads(request.data)
     if (check_valid_key(delete_scan_id["api_key"])):
-        scan_db.delete_scan(delete_scan_id["id""])
+        scan_db.delete_scan(delete_scan_id["id"])
         return '200'    
     return '400'
 
