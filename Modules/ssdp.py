@@ -7,11 +7,11 @@ from scanInterface import ScannerForm
 class scanner(ScannerForm):
     
     def scan(self):
-    """
+        """
         parameters = {
             "mx": <int 1-5>
         }
-    """
+        """
         
         if ("mx" in self.scan_param["packets"]["parameters"]):
             mx = self.scan_param["packets"]["parameters"]["mx"]

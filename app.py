@@ -33,10 +33,12 @@ def new_scan():
     <scan>
     """
     new_scan = json.loads(request.data)
+    scan= new_scan["scan"]
+    api_key = new_scan["api_key"]
     print(new_scan)
-    if (check_valid_key(new_scan["api_key"])):
-        new_scan["scheduled_time"] = (time.time())
-        scan_db.add_scan(new_scan)
+    if (check_valid_key(api_key)):
+        scan["scheduled_time"] = (time.time())
+        scan_db.add_scan(scan)
         return '200'
     return '400'
     
@@ -59,7 +61,7 @@ def delete_scan():
     """
     delete_scan_id = json.loads(request.data)
     if (check_valid_key(delete_scan_id["api_key"])):
-        scan_db.delete_scan(delete_scan_id)
+        scan_db.delete_scan(delete_scan_id["id""])
         return '200'    
     return '400'
 

@@ -6,11 +6,10 @@ class scanner(ScannerForm):
     def scan(self):
         """
         parameters = {
-            "SNMP_request": "get"/"get_bulk",
+            "SNMP_bulk": <boolean>,
             "OID": ""(OID trying to investigate),
             "bulk_non_repeaters": int(),
-            "bulk_max_repeaters": int(),
-            src_port = ""
+            "bulk_max_repeaters": int()
         }
         """
         targets = self.scan_param["ip-address"]
@@ -23,14 +22,14 @@ class scanner(ScannerForm):
 
     def scan_target(self, target):
         parameters = self.scan_param["packets"]["parameters"]
-        if (parameters["SNMP_request"] == "get"):
+        if (not parameters["SNMP_bulk"]):
             try:
-                print(get(target, [parameters["OID"]], hlapi.CommunityData('public'), parameters["src_port"]))
+                print(get(target, [parameters["OID"]], hlapi.CommunityData('public')))
             except:
                 "No RESPONSE"
-        elif(parameters["SNMP_request"] == "get_bulk"):
+        elif(parameters["SNMP_bulk"]):
             try:
-                print(get_bulk(target, [parameters["OID"]], hlapi.CommunityData('public'), parameters["bulk_max_repeaters"], parameters["bulk_non_repeaters"], parameters["src_port"]))
+                print(get_bulk(target, [parameters["OID"]], hlapi.CommunityData('public'), parameters["bulk_max_repeaters"], parameters["bulk_non_repeaters"]))
             except:
                 "NO RESPONSE"
 

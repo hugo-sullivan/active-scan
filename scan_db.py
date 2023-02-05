@@ -123,7 +123,7 @@ def update_scan(scan_id):
         if (scan["repeats"]["count"] > 0):
             new_scan = dict(scan)
             new_scan["repeats"]["count"] -= 1
-            new_scan["scheduled_time"] += new_scan["repeats"]["delay"]
+            new_scan["scheduled_time"] += (new_scan["repeats"]["delay"]*60)
             add_scan(new_scan)
         scan["start_time"] = time.time()
         database["running"][scan_id] = scan

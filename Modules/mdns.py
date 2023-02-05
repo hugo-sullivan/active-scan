@@ -12,7 +12,7 @@ class scanner(ScannerForm):
             "service": "<service being investigate>"
         }
         """
-        if (!scan_param["parameters"]["multicast"]):
+        if (not scan_param["parameters"]["multicast"]):
             zeroconf = Zeroconf(unicast=True)
         zeroconf = Zeroconf()
         listener = MyListener()
