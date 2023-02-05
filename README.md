@@ -7,9 +7,9 @@ The project pScan itself cannot process or return results from scans that it run
 Python was used with this project because it is meant for testing at small scales, so we used a language which cold be quickly added too with additional packet types.
 
 ## Setup Guide
-* Needs python 3.7-3.9
-* multiple packets need to be installed so a python package installer is helpful I recommend pip
-* The python packages required are
+Requires python 3.7-3.9
+Multiple packets need to be installed so a python package installer is helpful I recommend pip.
+The python packages required are
 - pysnmp
 - ssdpy
 - nmap3
@@ -17,8 +17,8 @@ Python was used with this project because it is meant for testing at small scale
 - flask
 - flask_swagger_ui
 - flasgger
-* these are listed in requirement.txt and can all be installed with pip using the command
-* the tool nmap also has to be installed, it can be installed here https://nmap.org/download.
+These are listed in requirement.txt and can all be installed with pip using the command
+The tool nmap also has to be installed, it can be installed here https://nmap.org/download.
 
 ## Usage
 To run the tool, run the program app.py then API calls can be made to it.
@@ -28,5 +28,6 @@ Instructions on the API is include in the swagger.yaml file to see access this, 
 To add additional modules:
 * the file has to be added to the directory *Modules*. 
 * They have to implement *ScannerForm* class in the *ScanInterface* file.
-* The class in this file must be called *scanner*
+* The class in the new module file must be called *scanner*
+* This new class requires *__init__* function as the other modules
 * The function *get_name* will return the name that has to  be put in the *type* section to call this function from the API.
