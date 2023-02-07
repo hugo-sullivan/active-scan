@@ -1,3 +1,5 @@
 scanTranslator.txt
 .gitignore
 database.json
+key.pem
+cert.pem

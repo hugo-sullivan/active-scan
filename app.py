@@ -76,5 +76,5 @@ if __name__ == '__main__':
     scan_thread = scan_control_thread()
     scan_thread.start()
     
-    app.run()
+    app.run(ssl_context=('../cert.pem', '../key.pem'))
     

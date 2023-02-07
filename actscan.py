@@ -73,8 +73,7 @@ def module_discover():
     
     module_dir = os.listdir()
     os.chdir('Modules')
-    dir_list = os.listdir()
-    modules = module_list(dir_list)
+    modules = module_list(os.listdir())
     
     scan_mod = {}
     for mod in modules:
