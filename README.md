@@ -32,7 +32,7 @@ The tool nmap also has to be installed, it can be installed here https://nmap.or
 
 The Server uses https so a cert.pem file and key.pem file have to be saved to the base directory, to generate your own SSL certificate I recommend using the program openssl. 
 
-To add and delete scans an API Key is required this should be entered in the configuration.yaml file and sent with the rest of the API call
+To add and delete scans an API Key is required this should be entered in the configuration.yaml file and sent with the rest of the API call.
 ## Usage
 To run the tool, run the program app.py then API calls can be made to it.
 
