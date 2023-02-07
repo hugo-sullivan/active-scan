@@ -20,11 +20,9 @@ class scan_control_thread(threading.Thread):
     
     
 def scan_handler(scan_id):
-    print("scan to complete "+str(scan_id))
     update_scan(scan_id)
     scan = get_scan(scan_id)
     print(scan)
     scanner(scan)
     update_scan(scan_id)
     
-    print("completed "+str(scan_id))

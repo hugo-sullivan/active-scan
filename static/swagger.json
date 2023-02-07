@@ -6,7 +6,11 @@
     "title": "pScan API",
     "contact": {
       "email": "hugo.s.sullivan@gmail.com"
-    }
+    },
+	"license": {
+	  "name": "MIT",
+	  "url": "https://opensource.org/licenses/MIT"
+	}
   },"servers": [
     {
       "url": "/"
