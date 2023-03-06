@@ -51,7 +51,7 @@ To extend our tool with additional modules:
 
 * the file has to be added to the directory *Modules*. 
 
-* They have to implement *ScannerForm* class in the *ScanInterface* file. 
+* They have to implement *ScannerForm* class in the *ScanInterface* file. 
 
 * The class in the new module file must be called *scanner*. 
 
