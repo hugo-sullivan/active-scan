@@ -30,7 +30,7 @@ These are listed in requirement.txt and can all be installed with pip using the 
 The tool nmap also has to be installed, it can be installed here https://nmap.org/download.
 
 
-The Server uses https so a cert.pem file and key.pem file have to be saved to the base directory, to generate your own SSL certificate I recommend using the program openssl. 
+The Server uses HTTPS so a cert.pem file and key.pem file have to be saved to the base directory, to generate your own SSL certificate I recommend using the program openssl. 
 
 To add and delete scans an API Key is required this should be entered in the configuration.yaml file and sent with the rest of the API call.
 ## Usage
