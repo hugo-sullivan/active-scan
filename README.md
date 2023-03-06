@@ -39,7 +39,7 @@ The tool [Nmap](https://nmap.org/download) also must be installed, it can be fou
 
 The Server uses HTTPS. Therefore, two files, namely *cert.pem* and *key.pem*, will have to be saved in the base directory. To generate your own SSL certificate, I recommend using openssl. 
 
-*To add and delete scans an API Key is required. This should be entered in the *configuration.yaml* file and sent with each API call. 
+To add and delete scans an API Key is required. This should be entered in the *configuration.yaml* file and sent with each API call. 
 
 ## Usage
 
