@@ -36,7 +36,7 @@ To add and delete scans an API Key is required this should be entered in the con
 ## Usage
 To run the tool, run the program app.py then API calls can be made to it.
 
-Instructions on the API is include in the swagger.yaml file to access this, run the app.py program and visit the page http://127.0.0.1:5000/swagger/, which will provide informaion on the different API calls and schemas that are used.
+Instructions on the API is include in the swagger.yaml file to access this, run the app.py program and visit the page http://127.0.0.1:5000/swagger/, which will provide information on the different API calls and schemas that are used.
 
 To add additional modules:
 * the file has to be added to the directory *Modules*. 
