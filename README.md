@@ -59,6 +59,6 @@ To extend our tool with additional modules:
 
 * The function *get_name* will return the name that has to be put in the *type* section to call this function from the API. 
 
-## References
+## Cite Our Tool
 <a id="1">[1]</a> 
 H. Sullivan, A. Sivanathan, A. Hamza, and H. Habibi Gharakheili, "Programmable Active Scans Controlled by Passive Traffic Inference for IoT Asset Characterization", IEEE/IFIP NOMS workshop on Internet of Things Management (Manage-IoT), Miami, FL, USA, May 2023. 
