@@ -39,9 +39,9 @@ $ python -m pip install -r requirements.txt
 The tool [Nmap](https://nmap.org/download) also must be installed, it can be found here. 
 
 
-The Server uses HTTPS. Therefore, two files, namely *cert.pem* and *key.pem*, will have to be saved in the base directory. To generate your own SSL certificate, I recommend using openssl. 
+The Server uses HTTPS. Therefore, two files, namely `cert.pem` and `key.pem`, will have to be saved in the base directory. To generate your own SSL certificate, I recommend using openssl. 
 
-To add and delete scans an API Key is required. This should be entered in the *configuration.yaml* file and sent with each API call. 
+To add and delete scans an API Key is required. This should be entered in the `configuration.yaml` file and sent with each API call. 
 
 ## Usage
 
@@ -51,19 +51,19 @@ To run the tool, execute the program app.py. Following that, API calls can be ma
 $ python app.py
 ```
 
-API documentation can be found in the *swagger.yaml* file. To access this file, run the app.py program and visit the page http://127.0.0.1:5000/swagger/, which will provide information on the different API calls and schemas that are used. 
+API documentation can be found in the `swagger.yaml` file. To access this file, run the app.py program and visit the page http://127.0.0.1:5000/swagger/, which will provide information on the different API calls and schemas that are used. 
 
 To extend our tool with additional modules: 
 
-* the file has to be added to the directory *Modules*. 
+* the file has to be added to the directory `Modules`. 
 
-* They have to implement *ScannerForm* class in the *ScanInterface* file. 
+* They have to implement `ScannerForm` class in the `ScanInterface` file. 
 
-* The class in the new module file must be called *scanner*. 
+* The class in the new module file must be called `scanner`. 
 
 * This new class requires the same init function as the other modules. 
 
-* The function *get_name* will return the name that has to be put in the *type* section to call this function from the API. 
+* The function `get_name` will return the name that has to be put in the `type` section to call this function from the API. 
 
 ## Cite Our Tool
 <a id="1">[1]</a> 
