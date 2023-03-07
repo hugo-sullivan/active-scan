@@ -31,7 +31,9 @@ The python packages required are
 
 These are listed in requirement.txt and can all be installed with pip using the command 
 
-**python -m pip install -r requirements.txt** 
+```shell
+python -m pip install -r requirements.txt
+```
 
 
 The tool [Nmap](https://nmap.org/download) also must be installed, it can be found here. 
