@@ -51,7 +51,7 @@ To run the tool, execute the program app.py. Following that, API calls can be ma
 $ python app.py
 ```
 
-API documentation can be found in the `swagger.yaml` file. To access this file, run the app.py program and visit the page http://127.0.0.1:5000/swagger/, which will provide information on the different API calls and schemas that are used. 
+API documentation can be found in the `swagger.yaml` file. To access this file, run the `app.py` program and visit the page http://127.0.0.1:5000/swagger/, which will provide information on the different API calls and schemas that are used. 
 
 To extend our tool with additional modules: 
 
