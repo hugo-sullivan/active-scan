@@ -3,12 +3,7 @@ A programmable packet emitter with open APIs that can be dynamically controlled 
 ## Description
 pScan can be used in conjunction with passive inference tools (see our research paper [[1]](#1)) to characterize IoT devices on a network. This tool dynamically emits specific packets on demand via API calls. pScan sends scan requests (to specified assets) and does not process responses to those request packets. Needless to say, a passive inference tool (the API caller) will ingest scan requests and corresponding responses in conjunction with other packets to/from all networked assets. 
 
-pScan is extensible and currently supports four packet types, namely 
->“TCP banner grabbing”
-> “SNMP”
-> “mDNS”
-> “SSDP”
-To accommodate an additional packet type, one can add only a corresponding file without changing any pre-existing code. 
+pScan is extensible and currently supports four packet types, namely “TCP banner grabbing”, “SNMP”, “mDNS”, and “SSDP”. To accommodate an additional packet type, one can add only a corresponding file without changing any pre-existing code. 
 
 The tool is written in Python for ease of development and extension. 
 
